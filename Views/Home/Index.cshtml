@@ -1,0 +1,221 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LocadoraVeiculosApi - Painel de Testes</title>
+    <style>
+        :root { color-scheme: light; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+        header { padding: 24px; background: #0f172a; color: white; }
+        header h1 { margin: 0 0 8px; font-size: 28px; }
+        header p { margin: 0; opacity: .9; }
+        main { max-width: 1200px; margin: 0 auto; padding: 24px; display: grid; gap: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08); }
+        .card h2 { margin-top: 0; font-size: 20px; }
+        .muted { color: #64748b; font-size: 14px; }
+        form { display: grid; gap: 12px; }
+        input, button, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; }
+        button { background: #0f172a; color: white; border: none; cursor: pointer; }
+        button.secondary { background: #334155; }
+        .actions { display: grid; gap: 10px; }
+        pre { margin: 0; white-space: pre-wrap; word-break: break-word; background: #0b1220; color: #e2e8f0; padding: 14px; border-radius: 12px; min-height: 120px; }
+        .top-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        a.link { color: #0ea5e9; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>LocadoraVeiculosApi</h1>
+    <p>Frontend mínimo para testar rapidamente a API e a estrutura MVC do projeto.</p>
+</header>
+<main>
+    <div class="card">
+        <div class="top-actions">
+            <a class="link" href="/swagger" target="_blank">Abrir Swagger</a>
+            <button class="secondary" onclick="loadEndpoint('/api/clientes')">Listar clientes</button>
+            <button class="secondary" onclick="loadEndpoint('/api/veiculos')">Listar veículos</button>
+            <button class="secondary" onclick="loadEndpoint('/api/alugueis')">Listar aluguéis</button>
+        </div>
+    </div>
+
+    <div class="grid">
+        <section class="card">
+            <h2>Fabricante</h2>
+            <p class="muted">Cadastro rápido de fabricante</p>
+            <form onsubmit="createFabricante(event)">
+                <input id="fabricanteNome" placeholder="Nome" required />
+                <input id="fabricantePais" placeholder="País de origem" />
+                <button type="submit">Salvar fabricante</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Categoria</h2>
+            <p class="muted">Cadastro rápido de categoria</p>
+            <form onsubmit="createCategoria(event)">
+                <input id="categoriaNome" placeholder="Nome" required />
+                <input id="categoriaValor" type="number" step="0.01" placeholder="Valor diária base" required />
+                <button type="submit">Salvar categoria</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Cliente</h2>
+            <p class="muted">Cadastro rápido de cliente</p>
+            <form onsubmit="createCliente(event)">
+                <input id="clienteNome" placeholder="Nome" required />
+                <input id="clienteCpf" placeholder="CPF" required />
+                <input id="clienteEmail" type="email" placeholder="Email" required />
+                <input id="clienteTelefone" placeholder="Telefone" />
+                <button type="submit">Salvar cliente</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Veículo</h2>
+            <p class="muted">Use IDs já cadastrados para fabricante e categoria</p>
+            <form onsubmit="createVeiculo(event)">
+                <input id="veiculoModelo" placeholder="Modelo" required />
+                <input id="veiculoAno" type="number" placeholder="Ano de fabricação" required />
+                <input id="veiculoKm" type="number" placeholder="Quilometragem atual" required />
+                <input id="veiculoPlaca" placeholder="Placa" required />
+                <input id="veiculoFabricanteId" type="number" placeholder="FabricanteId" required />
+                <input id="veiculoCategoriaId" type="number" placeholder="CategoriaVeiculoId" required />
+                <button type="submit">Salvar veículo</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Aluguel</h2>
+            <p class="muted">Use IDs já cadastrados para cliente e veículo</p>
+            <form onsubmit="createAluguel(event)">
+                <input id="aluguelClienteId" type="number" placeholder="ClienteId" required />
+                <input id="aluguelVeiculoId" type="number" placeholder="VeiculoId" required />
+                <input id="aluguelInicio" type="datetime-local" required />
+                <input id="aluguelFim" type="datetime-local" required />
+                <input id="aluguelDevolucao" type="datetime-local" />
+                <input id="aluguelKmInicial" type="number" placeholder="Quilometragem inicial" required />
+                <input id="aluguelKmFinal" type="number" placeholder="Quilometragem final" />
+                <input id="aluguelValorDiaria" type="number" step="0.01" placeholder="Valor diária" required />
+                <input id="aluguelValorTotal" type="number" step="0.01" placeholder="Valor total" required />
+                <button type="submit">Salvar aluguel</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Filtros rápidos</h2>
+            <div class="actions">
+                <input id="filtroFabricanteId" type="number" placeholder="FabricanteId" />
+                <button onclick="runFiltro('/api/filtros/veiculos-por-fabricante/' + filtroFabricanteId.value)">Veículos por fabricante</button>
+                <input id="filtroClienteId" type="number" placeholder="ClienteId" />
+                <button onclick="runFiltro('/api/filtros/alugueis-por-cliente/' + filtroClienteId.value)">Aluguéis por cliente</button>
+                <button onclick="runFiltro('/api/filtros/veiculos-sem-aluguel')">Veículos sem aluguel</button>
+                <button onclick="runFiltro('/api/filtros/fabricantes-com-total-veiculos')">Fabricantes com total de veículos</button>
+            </div>
+        </section>
+    </div>
+
+    <section class="card">
+        <h2>Resposta</h2>
+        <pre id="result">Pronto para testar a aplicação.</pre>
+    </section>
+</main>
+<script>
+const result = document.getElementById('result');
+
+async function request(url, options) {
+    const response = await fetch(url, {
+        headers: { 'Content-Type': 'application/json' },
+        ...options
+    });
+    const text = await response.text();
+    try {
+        result.textContent = JSON.stringify(JSON.parse(text), null, 2);
+    } catch {
+        result.textContent = text;
+    }
+}
+
+function toIso(value) {
+    return value ? new Date(value).toISOString() : null;
+}
+
+function loadEndpoint(url) { request(url); }
+function runFiltro(url) { if (url.endsWith('/')) return; request(url); }
+
+function createFabricante(event) {
+    event.preventDefault();
+    request('/api/fabricantes', {
+        method: 'POST',
+        body: JSON.stringify({
+            nome: document.getElementById('fabricanteNome').value,
+            paisOrigem: document.getElementById('fabricantePais').value
+        })
+    });
+}
+
+function createCategoria(event) {
+    event.preventDefault();
+    request('/api/categoriasveiculo', {
+        method: 'POST',
+        body: JSON.stringify({
+            nome: document.getElementById('categoriaNome').value,
+            valorDiariaBase: Number(document.getElementById('categoriaValor').value)
+        })
+    });
+}
+
+function createCliente(event) {
+    event.preventDefault();
+    request('/api/clientes', {
+        method: 'POST',
+        body: JSON.stringify({
+            nome: document.getElementById('clienteNome').value,
+            cpf: document.getElementById('clienteCpf').value,
+            email: document.getElementById('clienteEmail').value,
+            telefone: document.getElementById('clienteTelefone').value
+        })
+    });
+}
+
+function createVeiculo(event) {
+    event.preventDefault();
+    request('/api/veiculos', {
+        method: 'POST',
+        body: JSON.stringify({
+            modelo: document.getElementById('veiculoModelo').value,
+            anoFabricacao: Number(document.getElementById('veiculoAno').value),
+            quilometragemAtual: Number(document.getElementById('veiculoKm').value),
+            placa: document.getElementById('veiculoPlaca').value,
+            fabricanteId: Number(document.getElementById('veiculoFabricanteId').value),
+            categoriaVeiculoId: Number(document.getElementById('veiculoCategoriaId').value)
+        })
+    });
+}
+
+function createAluguel(event) {
+    event.preventDefault();
+    request('/api/alugueis', {
+        method: 'POST',
+        body: JSON.stringify({
+            clienteId: Number(document.getElementById('aluguelClienteId').value),
+            veiculoId: Number(document.getElementById('aluguelVeiculoId').value),
+            dataInicio: toIso(document.getElementById('aluguelInicio').value),
+            dataFimPrevista: toIso(document.getElementById('aluguelFim').value),
+            dataDevolucao: toIso(document.getElementById('aluguelDevolucao').value),
+            quilometragemInicial: Number(document.getElementById('aluguelKmInicial').value),
+            quilometragemFinal: document.getElementById('aluguelKmFinal').value ? Number(document.getElementById('aluguelKmFinal').value) : null,
+            valorDiaria: Number(document.getElementById('aluguelValorDiaria').value),
+            valorTotal: Number(document.getElementById('aluguelValorTotal').value)
+        })
+    });
+}
+</script>
+</body>
+</html>
