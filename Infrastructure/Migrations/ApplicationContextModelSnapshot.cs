@@ -1,12 +1,12 @@
 using System;
-using LocadoraVeiculosApi.Data;
+using LocadoraVeiculosApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace LocadoraVeiculosApi.Migrations
+namespace LocadoraVeiculosApi.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot
@@ -18,7 +18,7 @@ namespace LocadoraVeiculosApi.Migrations
                 .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Aluguel", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Aluguel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace LocadoraVeiculosApi.Migrations
                     b.ToTable("Alugueis", (string)null);
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.CategoriaVeiculo", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.CategoriaVeiculo", b =>
                 {
                     b.Property<int>("Id").ValueGeneratedOnAdd().HasColumnType("int");
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -49,7 +49,7 @@ namespace LocadoraVeiculosApi.Migrations
                     b.ToTable("CategoriasVeiculo", (string)null);
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Cliente", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Cliente", b =>
                 {
                     b.Property<int>("Id").ValueGeneratedOnAdd().HasColumnType("int");
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -63,7 +63,7 @@ namespace LocadoraVeiculosApi.Migrations
                     b.ToTable("Clientes", (string)null);
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Fabricante", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Fabricante", b =>
                 {
                     b.Property<int>("Id").ValueGeneratedOnAdd().HasColumnType("int");
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -73,7 +73,7 @@ namespace LocadoraVeiculosApi.Migrations
                     b.ToTable("Fabricantes", (string)null);
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Veiculo", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Veiculo", b =>
                 {
                     b.Property<int>("Id").ValueGeneratedOnAdd().HasColumnType("int");
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -90,14 +90,14 @@ namespace LocadoraVeiculosApi.Migrations
                     b.ToTable("Veiculos", (string)null);
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Aluguel", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Aluguel", b =>
                 {
-                    b.HasOne("LocadoraVeiculosApi.Models.Cliente", "Cliente")
+                    b.HasOne("LocadoraVeiculosApi.Domain.Entities.Cliente", "Cliente")
                         .WithMany("Alugueis")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                    b.HasOne("LocadoraVeiculosApi.Models.Veiculo", "Veiculo")
+                    b.HasOne("LocadoraVeiculosApi.Domain.Entities.Veiculo", "Veiculo")
                         .WithMany("Alugueis")
                         .HasForeignKey("VeiculoId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -106,14 +106,14 @@ namespace LocadoraVeiculosApi.Migrations
                     b.Navigation("Veiculo");
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Veiculo", b =>
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Veiculo", b =>
                 {
-                    b.HasOne("LocadoraVeiculosApi.Models.CategoriaVeiculo", "CategoriaVeiculo")
+                    b.HasOne("LocadoraVeiculosApi.Domain.Entities.CategoriaVeiculo", "CategoriaVeiculo")
                         .WithMany("Veiculos")
                         .HasForeignKey("CategoriaVeiculoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                    b.HasOne("LocadoraVeiculosApi.Models.Fabricante", "Fabricante")
+                    b.HasOne("LocadoraVeiculosApi.Domain.Entities.Fabricante", "Fabricante")
                         .WithMany("Veiculos")
                         .HasForeignKey("FabricanteId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -122,9 +122,9 @@ namespace LocadoraVeiculosApi.Migrations
                     b.Navigation("Fabricante");
                 });
 
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.CategoriaVeiculo", b => { b.Navigation("Veiculos"); });
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Cliente", b => { b.Navigation("Alugueis"); });
-            modelBuilder.Entity("LocadoraVeiculosApi.Models.Fabricante", b => { b.Navigation("Veiculos"); });
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.CategoriaVeiculo", b => { b.Navigation("Veiculos"); });
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Cliente", b => { b.Navigation("Alugueis"); });
+            modelBuilder.Entity("LocadoraVeiculosApi.Domain.Entities.Fabricante", b => { b.Navigation("Veiculos"); });
 #pragma warning restore 612, 618
         }
     }

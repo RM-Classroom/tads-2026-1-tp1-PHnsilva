@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LocadoraVeiculosApi.Models;
+namespace LocadoraVeiculosApi.Domain.Entities;
 
 public class Aluguel
 {

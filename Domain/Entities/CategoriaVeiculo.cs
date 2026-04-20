@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LocadoraVeiculosApi.DTOs;
+namespace LocadoraVeiculosApi.Domain.Entities;
 
-public class CategoriaVeiculoDto
+public class CategoriaVeiculo
 {
     public int Id { get; set; }
 
@@ -12,4 +13,6 @@ public class CategoriaVeiculoDto
 
     [Range(0, 999999.99)]
     public decimal ValorDiariaBase { get; set; }
+
+    public ICollection<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
 }

@@ -1,4 +1,4 @@
-namespace LocadoraVeiculosApi.DTOs;
+namespace LocadoraVeiculosApi.Application.DTOs;
 
 public class VeiculoDetalhadoFiltroDto
 {

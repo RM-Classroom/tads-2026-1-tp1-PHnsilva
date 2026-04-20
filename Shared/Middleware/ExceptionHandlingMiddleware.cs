@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace LocadoraVeiculosApi.Infrastructure.Middleware;
+namespace LocadoraVeiculosApi.Shared.Middleware;
 
 public class ExceptionHandlingMiddleware
 {

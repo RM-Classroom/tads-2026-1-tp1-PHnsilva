@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LocadoraVeiculosApi.DTOs;
+namespace LocadoraVeiculosApi.Application.DTOs;
 
 public class AluguelDto
 {

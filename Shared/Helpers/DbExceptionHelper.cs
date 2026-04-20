@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace LocadoraVeiculosApi.Helpers;
+namespace LocadoraVeiculosApi.Shared.Helpers;
 
 public static class DbExceptionHelper
 {

@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LocadoraVeiculosApi.Models;
+namespace LocadoraVeiculosApi.Application.DTOs;
 
-public class Veiculo
+public class VeiculoDto
 {
     public int Id { get; set; }
 
@@ -21,11 +20,9 @@ public class Veiculo
     [StringLength(10)]
     public string Placa { get; set; } = string.Empty;
 
+    [Range(1, int.MaxValue)]
     public int FabricanteId { get; set; }
-    public Fabricante? Fabricante { get; set; }
 
+    [Range(1, int.MaxValue)]
     public int CategoriaVeiculoId { get; set; }
-    public CategoriaVeiculo? CategoriaVeiculo { get; set; }
-
-    public ICollection<Aluguel> Alugueis { get; set; } = new List<Aluguel>();
 }

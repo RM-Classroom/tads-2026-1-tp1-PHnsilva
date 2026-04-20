@@ -1,7 +1,7 @@
-using LocadoraVeiculosApi.Models;
+using LocadoraVeiculosApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace LocadoraVeiculosApi.Data;
+namespace LocadoraVeiculosApi.Infrastructure.Data;
 
 public class ApplicationContext : DbContext
 {

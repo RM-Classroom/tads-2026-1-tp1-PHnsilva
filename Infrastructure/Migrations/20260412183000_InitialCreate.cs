@@ -1,11 +1,11 @@
 using System;
-using LocadoraVeiculosApi.Data;
+using LocadoraVeiculosApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace LocadoraVeiculosApi.Migrations
+namespace LocadoraVeiculosApi.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     [Migration("20260412183000_InitialCreate")]

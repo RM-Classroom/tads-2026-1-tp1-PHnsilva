@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LocadoraVeiculosApi.DTOs;
+namespace LocadoraVeiculosApi.Domain.Entities;
 
-public class FabricanteDto
+public class Fabricante
 {
     public int Id { get; set; }
 
@@ -12,4 +13,6 @@ public class FabricanteDto
 
     [StringLength(60)]
     public string? PaisOrigem { get; set; }
+
+    public ICollection<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
 }

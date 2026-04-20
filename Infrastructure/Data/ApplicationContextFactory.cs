@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace LocadoraVeiculosApi.Data;
+namespace LocadoraVeiculosApi.Infrastructure.Data;
 
 public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
 {

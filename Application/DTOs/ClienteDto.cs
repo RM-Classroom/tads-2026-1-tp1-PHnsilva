@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LocadoraVeiculosApi.Models;
+namespace LocadoraVeiculosApi.Application.DTOs;
 
-public class Cliente
+public class ClienteDto
 {
     public int Id { get; set; }
 
@@ -22,6 +21,4 @@ public class Cliente
 
     [StringLength(20)]
     public string? Telefone { get; set; }
-
-    public ICollection<Aluguel> Alugueis { get; set; } = new List<Aluguel>();
 }

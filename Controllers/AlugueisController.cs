@@ -1,6 +1,6 @@
-using LocadoraVeiculosApi.Data;
-using LocadoraVeiculosApi.DTOs;
-using LocadoraVeiculosApi.Models;
+using LocadoraVeiculosApi.Infrastructure.Data;
+using LocadoraVeiculosApi.Application.DTOs;
+using LocadoraVeiculosApi.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
