@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wireframes navegáveis | Rota Certa</title>
+    <link rel="stylesheet" href="wireframes.css" />
+</head>
+<body>
+    <aside>
+        <div class="brand"><span>RC</span><div><strong>Rota Certa</strong><small>Wireframes navegáveis</small></div></div>
+        <nav>
+            <button class="active" data-screen="dashboard">Dashboard</button>
+            <button data-screen="alugueis">Aluguéis</button>
+            <button data-screen="veiculos">Veículos</button>
+            <button data-screen="clientes">Clientes</button>
+            <button data-screen="fabricantes">Fabricantes</button>
+            <button data-screen="categorias">Categorias</button>
+        </nav>
+        <p class="note">Protótipo HTML de média/alta fidelidade. Use o menu para navegar entre as telas projetadas.</p>
+    </aside>
+    <main>
+        <header><div><small id="section-label">VISÃO GERAL</small><h1 id="page-title">Dashboard</h1></div><button class="primary" id="primary-action">+ Novo aluguel</button></header>
+
+        <section id="dashboard-screen">
+            <div class="intro"><div><small>DOMINGO, 21 DE JUNHO</small><h2>A operação em um só lugar.</h2><p>Acompanhe a frota, os contratos e o desempenho da locadora.</p></div><button>Ver todos os aluguéis →</button></div>
+            <div class="metrics">
+                <article class="dark"><small>ALUGUÉIS ATIVOS</small><strong>04</strong><p>Nenhum contrato em atraso</p></article>
+                <article><small>VEÍCULOS CADASTRADOS</small><strong>12</strong><p>5 disponíveis para locação</p></article>
+                <article><small>CLIENTES</small><strong>28</strong><p>Base total cadastrada</p></article>
+                <article><small>RECEITA CONTRATADA</small><strong>R$ 8.460</strong><p>Soma dos contratos</p></article>
+            </div>
+            <div class="dashboard-grid">
+                <article class="panel chart"><div class="panel-title"><div><small>DISTRIBUIÇÃO</small><h3>Frota por fabricante</h3></div><a>Gerenciar</a></div><div class="bars"><i style="height:42%"><b>2</b><em>Toyota</em></i><i style="height:72%"><b>4</b><em>Volkswagen</em></i><i style="height:56%"><b>3</b><em>Chevrolet</em></i><i style="height:36%"><b>2</b><em>Fiat</em></i><i style="height:22%"><b>1</b><em>Honda</em></i></div></article>
+                <article class="panel"><div class="panel-title"><div><small>DISPONIBILIDADE</small><h3>Veículos sem aluguel</h3></div><span class="count">5</span></div><div class="vehicle"><span>VI</span><div><b>Virtus</b><small>Volkswagen</small></div><code>XYZ9K88</code></div><div class="vehicle"><span>TC</span><div><b>Corolla Cross</b><small>Toyota</small></div><code>ABC1D23</code></div><div class="vehicle"><span>ON</span><div><b>Onix</b><small>Chevrolet</small></div><code>QWE4R56</code></div></article>
+            </div>
+        </section>
+
+        <section id="entity-screen" hidden>
+            <div class="intro"><div><small id="entity-section">OPERAÇÃO</small><h2 id="entity-title">Aluguéis</h2><p id="entity-description">Gerencie contratos, devoluções e valores da operação.</p></div><button class="primary" id="entity-action">+ Novo aluguel</button></div>
+            <article class="panel filters"><div class="panel-title"><div><h3>Filtros</h3><p>Refine os registros pelos campos abaixo.</p></div><a>Limpar filtros</a></div><div id="filter-fields" class="filter-fields"></div></article>
+            <article class="panel records"><div class="panel-title"><div><small>RESULTADOS</small><h3 id="records-title">Todos os aluguéis</h3></div><span class="count">2 registros</span></div><div class="table-scroll"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div></article>
+        </section>
+    </main>
+
+    <dialog id="form-dialog">
+        <button class="close" aria-label="Fechar">×</button><small>CADASTRO</small><h2 id="dialog-title">Novo aluguel</h2><p>O formulário final usa validação e os campos reais da entidade.</p><div class="dialog-fields"><label>Campo principal<input placeholder="Preencha o dado" /></label><label>Campo relacionado<select><option>Selecione</option></select></label><label>Informação complementar<input placeholder="Preencha o dado" /></label><label>Status ou valor<input placeholder="Preencha o dado" /></label></div><footer><button class="close">Cancelar</button><button class="primary close">Salvar cadastro</button></footer>
+    </dialog>
+
+    <script>
+        const screens = {
+            alugueis: { section: "Operação", title: "Aluguéis", singular: "aluguel", description: "Gerencie contratos, devoluções e valores da operação.", filters: ["Cliente ou veículo", "Status", "Início a partir de", "Início até"], heads: ["Cliente", "Veículo", "Período", "Status", "Valor"], rows: [["Pedro Henrique", "Corolla Cross", "20/04 a 23/04", "Finalizado", "R$ 540,00"], ["Maria Silva", "Virtus", "21/06 a 24/06", "Ativo", "R$ 450,00"]] },
+            veiculos: { section: "Operação", title: "Veículos", singular: "veículo", description: "Controle a frota, a quilometragem e a classificação dos veículos.", filters: ["Modelo ou placa", "Fabricante", "Categoria", "Ano"], heads: ["Veículo", "Placa", "Fabricante", "Categoria", "Quilometragem"], rows: [["Corolla Cross · 2023", "ABC1D23", "Toyota", "SUV", "15.000 km"], ["Virtus · 2022", "XYZ9K88", "Volkswagen", "Sedan", "22.000 km"]] },
+            clientes: { section: "Operação", title: "Clientes", singular: "cliente", description: "Mantenha os dados de contato e identificação dos clientes.", filters: ["Nome", "E-mail", "CPF", "Telefone"], heads: ["Cliente", "CPF", "E-mail", "Telefone"], rows: [["Pedro Henrique", "123.456.789-01", "pedro@email.com", "(31) 99999-9999"], ["Maria Silva", "987.654.321-00", "maria@email.com", "(31) 98888-8888"]] },
+            fabricantes: { section: "Cadastros", title: "Fabricantes", singular: "fabricante", description: "Organize as marcas utilizadas no cadastro da frota.", filters: ["Nome", "País de origem"], heads: ["Fabricante", "País de origem", "Veículos"], rows: [["Toyota", "Japão", "1"], ["Volkswagen", "Alemanha", "1"]] },
+            categorias: { section: "Cadastros", title: "Categorias", singular: "categoria", description: "Defina classes de veículo e os valores-base das diárias.", filters: ["Nome", "Diária mínima", "Diária máxima"], heads: ["Categoria", "Diária base", "Veículos"], rows: [["SUV", "R$ 180,00", "1"], ["Sedan", "R$ 150,00", "1"]] }
+        };
+        const nav = document.querySelector("nav");
+        nav.addEventListener("click", event => { const button = event.target.closest("button"); if (!button) return; openScreen(button.dataset.screen); });
+        function openScreen(screen) {
+            document.querySelectorAll("nav button").forEach(button => button.classList.toggle("active", button.dataset.screen === screen));
+            const dashboard = screen === "dashboard";
+            document.getElementById("dashboard-screen").hidden = !dashboard; document.getElementById("entity-screen").hidden = dashboard;
+            if (dashboard) { document.getElementById("page-title").textContent = "Dashboard"; document.getElementById("section-label").textContent = "VISÃO GERAL"; document.getElementById("primary-action").textContent = "+ Novo aluguel"; return; }
+            const data = screens[screen];
+            document.getElementById("page-title").textContent = data.title; document.getElementById("section-label").textContent = data.section.toUpperCase(); document.getElementById("entity-section").textContent = data.section.toUpperCase(); document.getElementById("entity-title").textContent = data.title; document.getElementById("entity-description").textContent = data.description; document.getElementById("primary-action").textContent = `+ Novo ${data.singular}`; document.getElementById("entity-action").textContent = `+ Novo ${data.singular}`; document.getElementById("records-title").textContent = `Todos os ${data.title.toLowerCase()}`;
+            document.getElementById("filter-fields").innerHTML = data.filters.map(label => `<label>${label}<input placeholder="Filtrar por ${label.toLowerCase()}" /></label>`).join("");
+            document.getElementById("table-head").innerHTML = `<tr>${data.heads.map(x => `<th>${x}</th>`).join("")}<th>AÇÕES</th></tr>`;
+            document.getElementById("table-body").innerHTML = data.rows.map(row => `<tr>${row.map(x => `<td>${x}</td>`).join("")}<td><button>Editar</button> <button>Excluir</button></td></tr>`).join("");
+        }
+        const dialog = document.getElementById("form-dialog");
+        document.getElementById("primary-action").onclick = showDialog; document.getElementById("entity-action").onclick = showDialog;
+        function showDialog() { document.getElementById("dialog-title").textContent = document.getElementById("primary-action").textContent.replace("+ ", ""); dialog.showModal(); }
+        document.querySelectorAll(".close").forEach(button => button.onclick = () => dialog.close());
+    </script>
+</body>
+</html>
