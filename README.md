@@ -16,7 +16,8 @@ Acesse:
 
 - aplicação: `http://localhost:5062/`
 - Swagger: `http://localhost:5062/swagger`
-- wireframes: abra [`docs/wireframes/index.html`](docs/wireframes/index.html) diretamente no navegador
+- wireframes navegáveis: abra [`docs/wireframes/index.html`](docs/wireframes/index.html) diretamente no navegador
+- wireframes em PNG: abra [`docs/wireframes/png/index.html`](docs/wireframes/png/index.html) ou use os arquivos em [`docs/wireframes/png/`](docs/wireframes/png/)
 
 Se o SQL Server estiver indisponível, o painel entra automaticamente em modo de demonstração e usa no navegador os dados fictícios registrados nas evidências originais do Swagger. Esse fallback não altera a API nem o banco. Para reiniciá-lo, remova a chave `rota-certa-demo-v2` do `localStorage`.
 
@@ -41,12 +42,14 @@ Infrastructure/         DbContext e migrations
 Shared/                 middleware e helpers
 Views/Home/             shell Razor do painel
 wwwroot/css e js/       frontend do painel
-docs/wireframes/        protótipo navegável compartilhável
+docs/wireframes/        protótipo navegável e PNGs compartilháveis
 ```
 
 ## Documentação da entrega
 
 - [Wireframes navegáveis](docs/wireframes/index.html)
+- [Wireframes em PNG](docs/wireframes/png/index.html)
+- [Resultados da entrega de front-end](docs/resultados-frontend.md)
 - [Evidências originais do Swagger](testes/testes_swagger.pdf)
 
 O diretório `docs/` pode ser publicado pelo GitHub Pages, Vercel ou serviço equivalente. No GitHub Pages, configure a publicação a partir da branch principal e use `docs/wireframes/index.html` como endereço do protótipo.

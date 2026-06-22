@@ -3,75 +3,245 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wireframes navegáveis | Rota Certa</title>
+    <title>Wireframes de Alta Fidelidade | Rota Certa</title>
     <link rel="stylesheet" href="wireframes.css" />
 </head>
 <body>
-    <aside>
-        <div class="brand"><span>RC</span><div><strong>Rota Certa</strong><small>Wireframes navegáveis</small></div></div>
-        <nav>
-            <button class="active" data-screen="dashboard">Dashboard</button>
-            <button data-screen="alugueis">Aluguéis</button>
-            <button data-screen="veiculos">Veículos</button>
-            <button data-screen="clientes">Clientes</button>
-            <button data-screen="fabricantes">Fabricantes</button>
-            <button data-screen="categorias">Categorias</button>
-        </nav>
-        <p class="note">Protótipo HTML de média/alta fidelidade. Use o menu para navegar entre as telas projetadas.</p>
-    </aside>
-    <main>
-        <header><div><small id="section-label">VISÃO GERAL</small><h1 id="page-title">Dashboard</h1></div><button class="primary" id="primary-action">+ Novo aluguel</button></header>
-
-        <section id="dashboard-screen">
-            <div class="intro"><div><small>DOMINGO, 21 DE JUNHO</small><h2>A operação em um só lugar.</h2><p>Acompanhe a frota, os contratos e o desempenho da locadora.</p></div><button>Ver todos os aluguéis →</button></div>
-            <div class="metrics">
-                <article class="dark"><small>ALUGUÉIS ATIVOS</small><strong>04</strong><p>Nenhum contrato em atraso</p></article>
-                <article><small>VEÍCULOS CADASTRADOS</small><strong>12</strong><p>5 disponíveis para locação</p></article>
-                <article><small>CLIENTES</small><strong>28</strong><p>Base total cadastrada</p></article>
-                <article><small>RECEITA CONTRATADA</small><strong>R$ 8.460</strong><p>Soma dos contratos</p></article>
+    <div class="prototype-shell">
+        <aside class="prototype-sidebar">
+            <div class="brand">
+                <span class="brand-mark">RC</span>
+                <div>
+                    <strong>Rota Certa</strong>
+                    <small>Locadora de Veículos</small>
+                </div>
             </div>
-            <div class="dashboard-grid">
-                <article class="panel chart"><div class="panel-title"><div><small>DISTRIBUIÇÃO</small><h3>Frota por fabricante</h3></div><a>Gerenciar</a></div><div class="bars"><i style="height:42%"><b>2</b><em>Toyota</em></i><i style="height:72%"><b>4</b><em>Volkswagen</em></i><i style="height:56%"><b>3</b><em>Chevrolet</em></i><i style="height:36%"><b>2</b><em>Fiat</em></i><i style="height:22%"><b>1</b><em>Honda</em></i></div></article>
-                <article class="panel"><div class="panel-title"><div><small>DISPONIBILIDADE</small><h3>Veículos sem aluguel</h3></div><span class="count">5</span></div><div class="vehicle"><span>VI</span><div><b>Virtus</b><small>Volkswagen</small></div><code>XYZ9K88</code></div><div class="vehicle"><span>TC</span><div><b>Corolla Cross</b><small>Toyota</small></div><code>ABC1D23</code></div><div class="vehicle"><span>ON</span><div><b>Onix</b><small>Chevrolet</small></div><code>QWE4R56</code></div></article>
-            </div>
-        </section>
+            <nav aria-label="Telas do protótipo">
+                <button class="active" data-screen="dashboard">Dashboard</button>
+                <button data-screen="alugueis">Aluguéis</button>
+                <button data-screen="veiculos">Veículos</button>
+                <button data-screen="clientes">Clientes</button>
+                <button data-screen="fabricantes">Fabricantes</button>
+                <button data-screen="categorias">Categorias</button>
+                <button data-screen="modal">Modal CRUD</button>
+                <button data-screen="mobile">Mobile</button>
+                <button data-screen="rubrica">Rubrica</button>
+            </nav>
+            <section class="side-card">
+                <strong>Objetivo</strong>
+                <p>Wireframes navegáveis em alta fidelidade para guiar e documentar o front-end da etapa atual.</p>
+            </section>
+        </aside>
 
-        <section id="entity-screen" hidden>
-            <div class="intro"><div><small id="entity-section">OPERAÇÃO</small><h2 id="entity-title">Aluguéis</h2><p id="entity-description">Gerencie contratos, devoluções e valores da operação.</p></div><button class="primary" id="entity-action">+ Novo aluguel</button></div>
-            <article class="panel filters"><div class="panel-title"><div><h3>Filtros</h3><p>Refine os registros pelos campos abaixo.</p></div><a>Limpar filtros</a></div><div id="filter-fields" class="filter-fields"></div></article>
-            <article class="panel records"><div class="panel-title"><div><small>RESULTADOS</small><h3 id="records-title">Todos os aluguéis</h3></div><span class="count">2 registros</span></div><div class="table-scroll"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div></article>
-        </section>
-    </main>
+        <main class="prototype-main">
+            <header class="prototype-header">
+                <div>
+                    <small id="section-label">VISÃO GERAL</small>
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <span class="status-dot">API conectada</span>
+                    <button class="ghost">↻ Atualizar</button>
+                    <button class="primary" id="primary-action">+ Novo aluguel</button>
+                </div>
+            </header>
 
-    <dialog id="form-dialog">
-        <button class="close" aria-label="Fechar">×</button><small>CADASTRO</small><h2 id="dialog-title">Novo aluguel</h2><p>O formulário final usa validação e os campos reais da entidade.</p><div class="dialog-fields"><label>Campo principal<input placeholder="Preencha o dado" /></label><label>Campo relacionado<select><option>Selecione</option></select></label><label>Informação complementar<input placeholder="Preencha o dado" /></label><label>Status ou valor<input placeholder="Preencha o dado" /></label></div><footer><button class="close">Cancelar</button><button class="primary close">Salvar cadastro</button></footer>
-    </dialog>
+            <section class="screen active" id="dashboard-screen" data-title="Dashboard" data-section="Visão geral">
+                <div class="hero-row">
+                    <div>
+                        <small>DOMINGO, 21 DE JUNHO</small>
+                        <h2>A operação em um só lugar.</h2>
+                        <p>Acompanhe frota, contratos, disponibilidade e receita da locadora.</p>
+                    </div>
+                    <button>Ver todos os aluguéis →</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <article class="metric dark"><small>ALUGUÉIS ATIVOS</small><strong>04</strong><p>Nenhum contrato em atraso</p></article>
+                    <article class="metric"><small>VEÍCULOS CADASTRADOS</small><strong>12</strong><p>5 disponíveis para locação</p></article>
+                    <article class="metric"><small>CLIENTES</small><strong>28</strong><p>Base total cadastrada</p></article>
+                    <article class="metric"><small>RECEITA CONTRATADA</small><strong>R$ 8.460</strong><p>Soma dos contratos</p></article>
+                </div>
+
+                <div class="dashboard-grid">
+                    <article class="panel chart-panel">
+                        <div class="panel-title"><div><small>DISTRIBUIÇÃO</small><h3>Frota por fabricante</h3></div><a>Gerenciar</a></div>
+                        <div class="bars" aria-label="Gráfico de barras">
+                            <i style="--h:42%"><b>2</b><em>Toyota</em></i>
+                            <i style="--h:72%"><b>4</b><em>Volkswagen</em></i>
+                            <i style="--h:56%"><b>3</b><em>Chevrolet</em></i>
+                            <i style="--h:36%"><b>2</b><em>Fiat</em></i>
+                            <i style="--h:22%"><b>1</b><em>Honda</em></i>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <div class="panel-title"><div><small>DISPONIBILIDADE</small><h3>Veículos sem aluguel</h3></div><span class="count">5</span></div>
+                        <div class="vehicle-card"><span>VI</span><div><b>Virtus</b><small>Volkswagen</small></div><code>XYZ9K88</code></div>
+                        <div class="vehicle-card"><span>TC</span><div><b>Corolla Cross</b><small>Toyota</small></div><code>ABC1D23</code></div>
+                        <div class="vehicle-card"><span>ON</span><div><b>Onix</b><small>Chevrolet</small></div><code>QWE4R56</code></div>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-title"><div><small>MOVIMENTAÇÃO RECENTE</small><h3>Últimos aluguéis</h3></div><a>Ver histórico →</a></div>
+                    <div class="table-scroll">
+                        <table>
+                            <thead><tr><th>Cliente</th><th>Veículo</th><th>Período</th><th>Status</th><th>Valor</th></tr></thead>
+                            <tbody>
+                                <tr><td><b>Pedro Henrique</b><small>123.456.789-01</small></td><td>Corolla Cross</td><td>20/04 a 23/04</td><td><span class="badge done">Finalizado</span></td><td>R$ 540,00</td></tr>
+                                <tr><td><b>Maria Silva</b><small>987.654.321-00</small></td><td>Virtus</td><td>21/06 a 24/06</td><td><span class="badge active">Ativo</span></td><td>R$ 450,00</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <section class="screen" id="entity-screen" data-title="Aluguéis" data-section="Operação">
+                <div class="entity-intro">
+                    <div><small id="entity-section">OPERAÇÃO</small><h2 id="entity-title">Aluguéis</h2><p id="entity-description">Gerencie contratos, devoluções e valores da operação.</p></div>
+                    <button class="primary" id="entity-action">+ Novo aluguel</button>
+                </div>
+                <article class="panel filters-panel">
+                    <div class="panel-title"><div><h3>Filtros</h3><p>Pesquisa combinada com pelo menos dois campos por entidade.</p></div><a>Limpar filtros</a></div>
+                    <div class="filter-grid" id="filter-fields"></div>
+                </article>
+                <article class="panel records-panel">
+                    <div class="panel-title"><div><small>RESULTADOS</small><h3 id="records-title">Todos os aluguéis</h3></div><span class="count" id="record-count">2 registros</span></div>
+                    <div class="table-scroll"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div>
+                </article>
+            </section>
+
+            <section class="screen" id="modal-screen" data-title="Modal CRUD" data-section="Cadastro, edição e exclusão">
+                <div class="modal-layout">
+                    <article class="dialog-wireframe">
+                        <button class="close">×</button>
+                        <small>OPERAÇÃO</small>
+                        <h2>Novo aluguel</h2>
+                        <p>Modal usado para cadastro e edição. Os campos mudam conforme a entidade selecionada.</p>
+                        <div class="dialog-grid">
+                            <label>Cliente<select><option>Pedro Henrique</option><option>Maria Silva</option></select></label>
+                            <label>Veículo<select><option>Corolla Cross</option><option>Virtus</option></select></label>
+                            <label>Data de início<input type="datetime-local" value="2026-06-21T08:00" /></label>
+                            <label>Fim previsto<input type="datetime-local" value="2026-06-24T08:00" /></label>
+                            <label>Quilometragem inicial<input value="15000" /></label>
+                            <label>Valor total<input value="540.00" /></label>
+                        </div>
+                        <footer><button>Cancelar</button><button class="primary">Salvar cadastro</button></footer>
+                    </article>
+                    <article class="confirm-wireframe">
+                        <small>CONFIRMAÇÃO</small>
+                        <h3>Excluir registro?</h3>
+                        <p>Você está prestes a excluir este item. Esta ação não poderá ser desfeita.</p>
+                        <footer><button>Cancelar</button><button class="danger">Excluir definitivamente</button></footer>
+                    </article>
+                </div>
+            </section>
+
+            <section class="screen" id="mobile-screen" data-title="Mobile" data-section="Responsividade">
+                <div class="phone-frame">
+                    <div class="phone-top"><button>☰</button><div><small>OPERAÇÃO</small><h2>Veículos</h2></div><button>↻</button></div>
+                    <button class="primary wide">+ Novo veículo</button>
+                    <article class="panel mobile-card"><h3>Filtros</h3><label>Modelo ou placa<input placeholder="Corolla ou ABC1D23" /></label><label>Fabricante<select><option>Todos</option></select></label></article>
+                    <article class="panel mobile-card"><small>RESULTADOS</small><h3>Todos os veículos</h3><div class="mobile-record"><b>Corolla Cross · 2023</b><span>ABC1D23 · Toyota · SUV</span><footer><button>Editar</button><button>Excluir</button></footer></div><div class="mobile-record"><b>Virtus · 2022</b><span>XYZ9K88 · Volkswagen · Sedan</span><footer><button>Editar</button><button>Excluir</button></footer></div></article>
+                </div>
+                <div class="mobile-notes">
+                    <h3>Comportamento esperado</h3>
+                    <p>A sidebar vira menu lateral, filtros empilham em uma coluna, tabelas têm rolagem horizontal e ações continuam acessíveis.</p>
+                </div>
+            </section>
+
+            <section class="screen" id="rubrica-screen" data-title="Rubrica" data-section="Evidência de requisitos">
+                <article class="panel requirements">
+                    <h2>Mapa de atendimento da atividade</h2>
+                    <table>
+                        <thead><tr><th>Critério</th><th>Onde aparece no projeto</th></tr></thead>
+                        <tbody>
+                            <tr><td>Wireframes de média/alta fidelidade</td><td><code>docs/wireframes/index.html</code> e <code>docs/wireframes/wireframes.css</code></td></tr>
+                            <tr><td>CRUD para todas as entidades</td><td>Fabricantes, Categorias, Clientes, Veículos e Aluguéis no painel principal</td></tr>
+                            <tr><td>Filtros em pelo menos dois campos por entidade</td><td>Tela de cada entidade possui filtros combinados específicos</td></tr>
+                            <tr><td>Visualizações usando consultas do banco</td><td>Dashboard, frota por fabricante, veículos sem aluguel e últimos aluguéis</td></tr>
+                            <tr><td>Rotas da terceira etapa</td><td><code>/api/fabricantes</code>, <code>/api/categoriasveiculo</code>, <code>/api/clientes</code>, <code>/api/veiculos</code>, <code>/api/alugueis</code>, <code>/api/filtros/*</code></td></tr>
+                            <tr><td>Uso de dados fictícios da etapa 1</td><td>Dados de demonstração no front-end e exemplos visuais dos wireframes</td></tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+        </main>
+    </div>
 
     <script>
-        const screens = {
-            alugueis: { section: "Operação", title: "Aluguéis", singular: "aluguel", description: "Gerencie contratos, devoluções e valores da operação.", filters: ["Cliente ou veículo", "Status", "Início a partir de", "Início até"], heads: ["Cliente", "Veículo", "Período", "Status", "Valor"], rows: [["Pedro Henrique", "Corolla Cross", "20/04 a 23/04", "Finalizado", "R$ 540,00"], ["Maria Silva", "Virtus", "21/06 a 24/06", "Ativo", "R$ 450,00"]] },
-            veiculos: { section: "Operação", title: "Veículos", singular: "veículo", description: "Controle a frota, a quilometragem e a classificação dos veículos.", filters: ["Modelo ou placa", "Fabricante", "Categoria", "Ano"], heads: ["Veículo", "Placa", "Fabricante", "Categoria", "Quilometragem"], rows: [["Corolla Cross · 2023", "ABC1D23", "Toyota", "SUV", "15.000 km"], ["Virtus · 2022", "XYZ9K88", "Volkswagen", "Sedan", "22.000 km"]] },
-            clientes: { section: "Operação", title: "Clientes", singular: "cliente", description: "Mantenha os dados de contato e identificação dos clientes.", filters: ["Nome", "E-mail", "CPF", "Telefone"], heads: ["Cliente", "CPF", "E-mail", "Telefone"], rows: [["Pedro Henrique", "123.456.789-01", "pedro@email.com", "(31) 99999-9999"], ["Maria Silva", "987.654.321-00", "maria@email.com", "(31) 98888-8888"]] },
-            fabricantes: { section: "Cadastros", title: "Fabricantes", singular: "fabricante", description: "Organize as marcas utilizadas no cadastro da frota.", filters: ["Nome", "País de origem"], heads: ["Fabricante", "País de origem", "Veículos"], rows: [["Toyota", "Japão", "1"], ["Volkswagen", "Alemanha", "1"]] },
-            categorias: { section: "Cadastros", title: "Categorias", singular: "categoria", description: "Defina classes de veículo e os valores-base das diárias.", filters: ["Nome", "Diária mínima", "Diária máxima"], heads: ["Categoria", "Diária base", "Veículos"], rows: [["SUV", "R$ 180,00", "1"], ["Sedan", "R$ 150,00", "1"]] }
+        const entityScreens = {
+            alugueis: {
+                section: "Operação", title: "Aluguéis", singular: "aluguel", description: "Gerencie contratos, devoluções e valores da operação.",
+                filters: ["Cliente ou veículo", "Status", "Início a partir de", "Início até"],
+                heads: ["Cliente", "Veículo", "Período", "Status", "Valor", "Ações"],
+                rows: [["Pedro Henrique", "Corolla Cross", "20/04 a 23/04", "Finalizado", "R$ 540,00"], ["Maria Silva", "Virtus", "21/06 a 24/06", "Ativo", "R$ 450,00"]]
+            },
+            veiculos: {
+                section: "Operação", title: "Veículos", singular: "veículo", description: "Controle a frota, a quilometragem e a classificação dos veículos.",
+                filters: ["Modelo ou placa", "Fabricante", "Categoria", "Ano de fabricação"],
+                heads: ["Veículo", "Placa", "Fabricante", "Categoria", "Quilometragem", "Ações"],
+                rows: [["Corolla Cross · 2023", "ABC1D23", "Toyota", "SUV", "15.000 km"], ["Virtus · 2022", "XYZ9K88", "Volkswagen", "Sedan", "22.000 km"]]
+            },
+            clientes: {
+                section: "Operação", title: "Clientes", singular: "cliente", description: "Mantenha os dados de contato e identificação dos clientes.",
+                filters: ["Nome", "E-mail", "CPF", "Telefone"],
+                heads: ["Cliente", "CPF", "E-mail", "Telefone", "Ações"],
+                rows: [["Pedro Henrique", "123.456.789-01", "pedro@email.com", "(31) 99999-9999"], ["Maria Silva", "987.654.321-00", "maria@email.com", "(31) 98888-8888"]]
+            },
+            fabricantes: {
+                section: "Cadastros", title: "Fabricantes", singular: "fabricante", description: "Organize as marcas utilizadas no cadastro da frota.",
+                filters: ["Nome", "País de origem"],
+                heads: ["Fabricante", "País de origem", "Veículos", "Ações"],
+                rows: [["Toyota", "Japão", "1"], ["Volkswagen", "Alemanha", "1"]]
+            },
+            categorias: {
+                section: "Cadastros", title: "Categorias", singular: "categoria", description: "Defina classes de veículo e os valores-base das diárias.",
+                filters: ["Nome", "Diária mínima", "Diária máxima"],
+                heads: ["Categoria", "Diária base", "Veículos", "Ações"],
+                rows: [["SUV", "R$ 180,00", "1"], ["Sedan", "R$ 150,00", "1"]]
+            }
         };
+
         const nav = document.querySelector("nav");
-        nav.addEventListener("click", event => { const button = event.target.closest("button"); if (!button) return; openScreen(button.dataset.screen); });
-        function openScreen(screen) {
-            document.querySelectorAll("nav button").forEach(button => button.classList.toggle("active", button.dataset.screen === screen));
-            const dashboard = screen === "dashboard";
-            document.getElementById("dashboard-screen").hidden = !dashboard; document.getElementById("entity-screen").hidden = dashboard;
-            if (dashboard) { document.getElementById("page-title").textContent = "Dashboard"; document.getElementById("section-label").textContent = "VISÃO GERAL"; document.getElementById("primary-action").textContent = "+ Novo aluguel"; return; }
-            const data = screens[screen];
-            document.getElementById("page-title").textContent = data.title; document.getElementById("section-label").textContent = data.section.toUpperCase(); document.getElementById("entity-section").textContent = data.section.toUpperCase(); document.getElementById("entity-title").textContent = data.title; document.getElementById("entity-description").textContent = data.description; document.getElementById("primary-action").textContent = `+ Novo ${data.singular}`; document.getElementById("entity-action").textContent = `+ Novo ${data.singular}`; document.getElementById("records-title").textContent = `Todos os ${data.title.toLowerCase()}`;
-            document.getElementById("filter-fields").innerHTML = data.filters.map(label => `<label>${label}<input placeholder="Filtrar por ${label.toLowerCase()}" /></label>`).join("");
-            document.getElementById("table-head").innerHTML = `<tr>${data.heads.map(x => `<th>${x}</th>`).join("")}<th>AÇÕES</th></tr>`;
-            document.getElementById("table-body").innerHTML = data.rows.map(row => `<tr>${row.map(x => `<td>${x}</td>`).join("")}<td><button>Editar</button> <button>Excluir</button></td></tr>`).join("");
+        const screens = document.querySelectorAll(".screen");
+        nav.addEventListener("click", (event) => {
+            const button = event.target.closest("button[data-screen]");
+            if (!button) return;
+            openScreen(button.dataset.screen);
+        });
+        document.getElementById("primary-action").addEventListener("click", () => openScreen("modal"));
+        document.getElementById("entity-action").addEventListener("click", () => openScreen("modal"));
+
+        function openScreen(name) {
+            document.querySelectorAll("nav button").forEach(button => button.classList.toggle("active", button.dataset.screen === name));
+            screens.forEach(screen => screen.classList.remove("active"));
+            const entity = entityScreens[name];
+            let target = document.getElementById(`${name}-screen`);
+            if (entity) {
+                target = document.getElementById("entity-screen");
+                hydrateEntity(name, entity);
+            }
+            target.classList.add("active");
+            document.getElementById("page-title").textContent = target.dataset.title;
+            document.getElementById("section-label").textContent = target.dataset.section.toUpperCase();
+            document.getElementById("primary-action").textContent = entity ? `+ Novo ${entity.singular}` : "+ Novo aluguel";
         }
-        const dialog = document.getElementById("form-dialog");
-        document.getElementById("primary-action").onclick = showDialog; document.getElementById("entity-action").onclick = showDialog;
-        function showDialog() { document.getElementById("dialog-title").textContent = document.getElementById("primary-action").textContent.replace("+ ", ""); dialog.showModal(); }
-        document.querySelectorAll(".close").forEach(button => button.onclick = () => dialog.close());
+
+        function hydrateEntity(name, data) {
+            const target = document.getElementById("entity-screen");
+            target.dataset.title = data.title;
+            target.dataset.section = data.section;
+            document.getElementById("entity-section").textContent = data.section.toUpperCase();
+            document.getElementById("entity-title").textContent = data.title;
+            document.getElementById("entity-description").textContent = data.description;
+            document.getElementById("entity-action").textContent = `+ Novo ${data.singular}`;
+            document.getElementById("records-title").textContent = `Todos os ${data.title.toLowerCase()}`;
+            document.getElementById("record-count").textContent = `${data.rows.length} registros`;
+            document.getElementById("filter-fields").innerHTML = data.filters.map(label => `<label>${label}<input placeholder="Filtrar por ${label.toLowerCase()}" /></label>`).join("");
+            document.getElementById("table-head").innerHTML = `<tr>${data.heads.map(x => `<th>${x}</th>`).join("")}</tr>`;
+            document.getElementById("table-body").innerHTML = data.rows.map(row => `<tr>${row.map(x => `<td>${x}</td>`).join("")}<td><button>Editar</button><button>Excluir</button></td></tr>`).join("");
+        }
     </script>
 </body>
 </html>
